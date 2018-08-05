@@ -37,8 +37,10 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.raywenderlich.android.bookmanstreasure.R
+import com.raywenderlich.android.bookmanstreasure.ui.authordetails.AuthorDetailsViewModel
 import com.raywenderlich.android.bookmanstreasure.ui.workdetails.AuthorsAdapter
 import com.raywenderlich.android.bookmanstreasure.util.initToolbar
 import kotlinx.android.synthetic.main.fragment_book_details.*
@@ -84,7 +86,10 @@ class BookDetailsFragment : Fragment() {
 
       val adapter = AuthorsAdapter(it?.authors ?: ArrayList())
       adapter.itemCLickListener = {
-        // TODO implement navigation to author details
+        findNavController().navigate(
+            R.id.actionShowAuthor,
+            AuthorDetailsViewModel.createArguments(it)
+        )
       }
 
       rvAuthors.adapter = adapter

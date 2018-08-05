@@ -27,29 +27,48 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/drawerLayout"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:fitsSystemWindows="true"
-  tools:openDrawer="start">
+  app:startDestination="@+id/launcherFragment">
 
   <fragment
-    android:id="@+id/navHostFragment"
-    android:name="androidx.navigation.fragment.NavHostFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:defaultNavHost="true" />
+    android:id="@+id/launcherFragment"
+    android:name="com.raywenderlich.android.bookmanstreasure.ui.launcher.LauncherFragment"
+    android:label="Blank"
+    tools:layout="@layout/fragment_launcher">
+    <action
+      android:id="@+id/actionBookSearch"
+      app:destination="@id/bookSearchFragment" />
+    <action
+      android:id="@+id/actionFavourites"
+      app:destination="@id/favouritesFragment" />
+  </fragment>
 
-  <android.support.design.widget.NavigationView
-    android:id="@+id/navView"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:layout_gravity="start"
-    android:fitsSystemWindows="true"
-    app:headerLayout="@layout/nav_header_nav_drawer"
-    app:menu="@menu/activity_nav_drawer" />
+  <fragment
+    android:id="@+id/bookSearchFragment"
+    android:name="com.raywenderlich.android.bookmanstreasure.ui.booksearch.BookSearchFragment"
+    android:label="Book Search"
+    tools:layout="@layout/fragment_book_search">
+    <action
+      android:id="@+id/actionBookDetails"
+      app:destination="@+id/bookDetailsGraph" />
+  </fragment>
 
-</android.support.v4.widget.DrawerLayout>
+  <fragment
+    android:id="@+id/favouritesFragment"
+    android:name="com.raywenderlich.android.bookmanstreasure.ui.favourites.FavouritesFragment"
+    android:label="favourites_fragment"
+    tools:layout="@layout/fragment_favourites">
+    <action
+      android:id="@+id/actionBookDetails"
+      app:destination="@id/bookDetailsGraph" 
+      app:enterAnim="@anim/slide_in_right"
+      app:exitAnim="@anim/slide_out_left"
+      app:popEnterAnim="@anim/slide_in_left"
+      app:popExitAnim="@anim/slide_out_right" />
+    <deepLink app:uri="bookmanstreasure://home/favourites" />
+  </fragment>
+
+  <include app:graph="@navigation/book_nav_graph" />
+</navigation>

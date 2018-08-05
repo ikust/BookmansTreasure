@@ -38,10 +38,13 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+
 import com.raywenderlich.android.bookmanstreasure.R
 import com.raywenderlich.android.bookmanstreasure.ui.MainActivityDelegate
 import com.raywenderlich.android.bookmanstreasure.ui.booksearch.WorksAdapter
+import com.raywenderlich.android.bookmanstreasure.ui.workdetails.WorkDetailsViewModel
 import com.raywenderlich.android.bookmanstreasure.util.initToolbar
 import kotlinx.android.synthetic.main.fragment_favorites.*
 
@@ -84,7 +87,10 @@ class FavoritesFragment : Fragment() {
 
   private fun initAdapter() {
     val adapter = WorksAdapter(Glide.with(this)) {
-      //TODO implement navigation to Work details
+      findNavController().navigate(
+          R.id.actionBookDetails,
+          WorkDetailsViewModel.createArguments(it)
+      )
     }
 
     viewModel.data.observe(this, Observer {

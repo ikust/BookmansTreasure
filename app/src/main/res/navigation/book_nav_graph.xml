@@ -27,19 +27,34 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  tools:showIn="navigation_view">
+  android:id="@+id/bookDetailsGraph"
+  app:startDestination="@id/workDetailsFragment">
 
-  <group android:checkableBehavior="single">
-    <item
-      android:id="@+id/bookSearchFragment"
-      android:icon="@drawable/ic_menu_search"
-      android:title="@string/book_search" />
-    <item
-      android:id="@+id/favoritesFragment"
-      android:icon="@drawable/ic_menu_favorites"
-      android:title="@string/favorites" />
-  </group>
+  <action
+    android:id="@+id/actionShowAuthor"
+    app:destination="@id/authorDetails" />
 
-</menu>
+  <fragment
+    android:id="@+id/workDetailsFragment"
+    android:name="com.raywenderlich.android.bookmanstreasure.ui.workdetails.WorkDetailsFragment"
+    android:label="work_details_fragment"
+    tools:layout="@layout/fragment_work_details">
+    <action
+      android:id="@+id/actionShowEdition"
+      app:destination="@id/bookDetailsFragment" />
+
+  </fragment>
+
+  <fragment
+    android:id="@+id/bookDetailsFragment"
+    android:name="com.raywenderlich.android.bookmanstreasure.ui.bookdetails.BookDetailsFragment"
+    android:label="book_details_fragment"
+    tools:layout="@layout/fragment_book_details" />
+
+  <author
+    android:id="@+id/authorDetails" />
+
+</navigation>

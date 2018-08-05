@@ -41,6 +41,7 @@ THE SOFTWARE.
     android:theme="@style/AppTheme">
     <activity android:name=".MainActivity"
       android:theme="@style/AppTheme.Splash">
+      <nav-graph android:value="@navigation/nav_graph" />
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 

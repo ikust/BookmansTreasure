@@ -42,11 +42,13 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.raywenderlich.android.bookmanstreasure.R
 import com.raywenderlich.android.bookmanstreasure.data.SearchCriteria
 import com.raywenderlich.android.bookmanstreasure.source.NetworkState
 import com.raywenderlich.android.bookmanstreasure.ui.MainActivityDelegate
+import com.raywenderlich.android.bookmanstreasure.ui.workdetails.WorkDetailsViewModel
 import com.raywenderlich.android.bookmanstreasure.util.initToolbar
 import kotlinx.android.synthetic.main.fragment_book_search.*
 
@@ -134,7 +136,10 @@ class BookSearchFragment : Fragment() {
 
     rvBooks.adapter = adapter
     adapter.itemClickListener = {
-      //TODO implement navigation to Book details
+      findNavController().navigate(
+          R.id.actionBookDetails,
+          WorkDetailsViewModel.createArguments(it)
+      )
     }
 
     viewModel.data.observe(this, Observer {
