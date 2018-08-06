@@ -122,7 +122,8 @@ class WorkDetailsFragment : Fragment() {
 
       val numberOfEditions = work?.editionIsbns?.size ?: 0
 
-      tvEditions.text = getString(R.string.editions_available, numberOfEditions)
+      tvEditions.text = resources.getQuantityString(R.plurals.editions_available,
+          numberOfEditions, numberOfEditions)
     })
   }
 
