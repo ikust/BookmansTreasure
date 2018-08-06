@@ -49,7 +49,6 @@ abstract class FavouritesDatabase : RoomDatabase() {
         Room.databaseBuilder(context, FavouritesDatabase::class.java, DATABASE_NAME)
             .fallbackToDestructiveMigration()
             .build()
-
   }
 
   abstract fun favouritesDao(): FavouritesDao

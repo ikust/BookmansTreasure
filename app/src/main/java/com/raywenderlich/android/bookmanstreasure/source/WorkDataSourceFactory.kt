@@ -55,5 +55,4 @@ class WorkDataSourceFactory(
     sourceLiveData.postValue(source)
     return source
   }
-
 }

@@ -44,9 +44,9 @@ import com.raywenderlich.android.bookmanstreasure.data.Work
 import com.raywenderlich.android.bookmanstreasure.util.CoverSize
 import com.raywenderlich.android.bookmanstreasure.util.loadCover
 
-
-class WorksAdapter(private val glide: RequestManager,
-                   var itemClickListener: ((Work) -> Unit)? = null
+class WorksAdapter(
+    private val glide: RequestManager,
+    var itemClickListener: ((Work) -> Unit)? = null
 ) : PagedListAdapter<Work, WorksAdapter.ViewHolder>(WORK_COMPARATOR) {
 
   class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -89,7 +89,6 @@ class WorksAdapter(private val glide: RequestManager,
 
       override fun areItemsTheSame(oldItem: Work, newItem: Work): Boolean =
           oldItem.coverId == newItem.coverId
-
     }
   }
 }

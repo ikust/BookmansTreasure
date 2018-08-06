@@ -67,7 +67,7 @@ data class Work(
 
     @ColumnInfo(name = "author_key")
     @SerializedName("author_key")
-    val authorkey: List<String>,
+    val authorKey: List<String>,
 
     @ColumnInfo(name = "isbn")
     @SerializedName("isbn")

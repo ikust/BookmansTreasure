@@ -50,10 +50,10 @@ class WorkDataSource(
   val networkState = MutableLiveData<NetworkState>()
 
   fun getNextPageKey(firstItem: Int, itemCount: Int, pageSize: Int): Int? {
-    if (firstItem + pageSize < itemCount) {
-      return (firstItem + pageSize / pageSize) + 1
+    return if (firstItem + pageSize < itemCount) {
+      (firstItem + pageSize / pageSize) + 1
     } else {
-      return null
+      null
     }
   }
 

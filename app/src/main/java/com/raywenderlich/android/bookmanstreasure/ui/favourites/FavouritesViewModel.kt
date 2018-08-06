@@ -55,9 +55,7 @@ class FavouritesViewModel(app: Application) : AndroidViewModel(app) {
   val data = LivePagedListBuilder(favouritesDataSourceFactory, pagingConfig)
       .build()
 
-
   fun refreshList() {
     data.value?.dataSource?.invalidate()
   }
-
 }

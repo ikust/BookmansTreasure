@@ -59,5 +59,4 @@ class LauncherFragment : Fragment(), LifecycleObserver {
       //TODO implement navigating to Search or Favourites
     })
   }
-
 }
