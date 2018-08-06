@@ -43,7 +43,6 @@ import android.widget.Button
 import com.raywenderlich.android.bookmanstreasure.R
 
 class AuthorDetailsDialog : DialogFragment() {
-
   private lateinit var viewModel: AuthorDetailsViewModel
 
   private lateinit var webView: WebView
@@ -79,5 +78,9 @@ class AuthorDetailsDialog : DialogFragment() {
 
       webView.loadUrl(authorUrl)
     })
+  }
+
+  companion object {
+    const val TAG = "AuthorDetailsDialog.TAG"
   }
 }
