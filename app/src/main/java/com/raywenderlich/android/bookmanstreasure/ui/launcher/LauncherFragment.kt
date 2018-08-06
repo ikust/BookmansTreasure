@@ -59,4 +59,6 @@ class LauncherFragment : Fragment(), LifecycleObserver {
       //TODO implement navigating to Search or Favourites
     })
   }
+
+  private fun Int?.hasFavourites() = this != null && this > 0
 }
