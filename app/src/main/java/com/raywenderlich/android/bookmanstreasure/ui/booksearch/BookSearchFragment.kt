@@ -50,7 +50,6 @@ import com.raywenderlich.android.bookmanstreasure.ui.MainActivityDelegate
 import com.raywenderlich.android.bookmanstreasure.util.initToolbar
 import kotlinx.android.synthetic.main.fragment_book_search.*
 
-
 class BookSearchFragment : Fragment() {
 
   private lateinit var viewModel: BookSearchViewModel
@@ -108,7 +107,6 @@ class BookSearchFragment : Fragment() {
     imm.hideSoftInputFromWindow(view.windowToken, 0)
   }
 
-
   private fun initCriteriaSpinner() {
     val adapter = ArrayAdapter<String>(
         context,
@@ -127,7 +125,6 @@ class BookSearchFragment : Fragment() {
       }
 
       override fun onNothingSelected(p0: AdapterView<*>?) {
-
       }
     }
   }
@@ -151,5 +148,4 @@ class BookSearchFragment : Fragment() {
       }
     })
   }
-
 }

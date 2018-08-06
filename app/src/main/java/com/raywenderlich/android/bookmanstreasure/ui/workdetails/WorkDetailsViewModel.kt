@@ -72,9 +72,10 @@ class WorkDetailsViewModel(app: Application) : AndroidViewModel(app) {
   val data = LivePagedListBuilder(bookDataSourceFactory, pagingConfig)
       .build()
 
-  val networkState: LiveData<NetworkState> = Transformations.switchMap(bookDataSourceFactory.sourceLiveData) {
-    it.networkState
-  }
+  val networkState: LiveData<NetworkState> =
+      Transformations.switchMap(bookDataSourceFactory.sourceLiveData) {
+        it.networkState
+      }
 
   val work: LiveData<Work> = Transformations.map(bookDataSourceFactory.work) { it }
 
@@ -116,6 +117,4 @@ class WorkDetailsViewModel(app: Application) : AndroidViewModel(app) {
       false
     }
   }
-
-
 }

@@ -63,7 +63,6 @@ interface OpenLibraryApi {
       @Query("page") page: Int
   ): Call<SearchResponse>
 
-
   companion object {
     private const val BASE_URL = "https://openlibrary.org/"
     fun create(): OpenLibraryApi = create(HttpUrl.parse(BASE_URL)!!)

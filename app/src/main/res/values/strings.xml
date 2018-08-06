@@ -36,7 +36,10 @@ THE SOFTWARE.
   <string name="book_search">Book Search</string>
   <string name="favourites">Favourites</string>
 
-  <string name="editions_available">%1$d Editions available</string>
+  <plurals name="editions_available">
+    <item quantity="one">%1$d edition available</item>
+    <item quantity="other">%1$d editions available</item>
+  </plurals>
 
   <string name="http_prefix">http</string>
   <string name="author_page_url">https://openlibrary.org/authors/%1$s</string>

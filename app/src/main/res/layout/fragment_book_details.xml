@@ -97,7 +97,7 @@ THE SOFTWARE.
         android:scrollbars="none"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         tools:listitem="@layout/item_author"
-        tools:itemCount="1"/>
+        tools:itemCount="1" />
 
       <View
         android:layout_width="wrap_content"

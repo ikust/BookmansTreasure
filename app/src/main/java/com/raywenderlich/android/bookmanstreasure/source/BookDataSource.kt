@@ -48,10 +48,10 @@ class BookDataSource(
   val networkState = MutableLiveData<NetworkState>()
 
   fun getNextPageKey(startIndex: Int, count: Int): Int? {
-    if (startIndex + count < work?.editionIsbns?.size ?: 0) {
-      return (startIndex + count)
+    return if (startIndex + count < work?.editionIsbns?.size ?: 0) {
+      (startIndex + count)
     } else {
-      return null
+      null
     }
   }
 
@@ -94,7 +94,6 @@ class BookDataSource(
           null,
           getNextPageKey(0, params.requestedLoadSize)
       )
-
     } catch (ioException: IOException) {
       ioException.printStackTrace()
 

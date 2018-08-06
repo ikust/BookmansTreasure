@@ -68,7 +68,8 @@ class BooksAdapter(
         .into(holder.cover)
 
     holder.title.text = getItem(position)?.title
-    holder.published.text = holder.itemView.context.getString(R.string.published_year, getItem(position)?.publishDate)
+    holder.published.text =
+        holder.itemView.context.getString(R.string.published_year, getItem(position)?.publishDate)
 
     holder.itemView.setOnClickListener {
       if (item != null) itemClickListener?.invoke(item)
@@ -82,7 +83,6 @@ class BooksAdapter(
 
       override fun areItemsTheSame(oldItem: Book, newItem: Book): Boolean =
           oldItem.url == newItem.url
-
     }
   }
 }
