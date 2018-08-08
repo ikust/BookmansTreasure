@@ -54,7 +54,6 @@ interface FavouritesDao {
   @Insert(onConflict = REPLACE)
   fun addFavourite(work: Work)
 
-  @Delete()
+  @Delete
   fun removeFavourite(work: Work)
-
 }

@@ -122,7 +122,8 @@ class WorkDetailsFragment : Fragment() {
 
       val numberOfEditions = work?.editionIsbns?.size ?: 0
 
-      tvEditions.text = getString(R.string.editions_available, numberOfEditions)
+      tvEditions.text = resources.getQuantityString(R.plurals.editions_available,
+          numberOfEditions, numberOfEditions)
     })
   }
 
@@ -150,11 +151,11 @@ class WorkDetailsFragment : Fragment() {
     val authors = ArrayList<Author>()
 
     if (it?.authorName?.size != null) {
-      for (i in 0..(it.authorName.size - 1)) {
+      for (i in 0 until it.authorName.size) {
         authors.add(
             Author(
-                it.authorName.get(i),
-                it.authorkey.get(i)
+                it.authorName[i],
+                it.authorKey[i]
             )
         )
       }
@@ -162,5 +163,4 @@ class WorkDetailsFragment : Fragment() {
 
     return authors
   }
-
 }

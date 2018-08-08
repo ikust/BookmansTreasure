@@ -60,4 +60,5 @@ class LauncherFragment : Fragment(), LifecycleObserver {
     })
   }
 
+  private fun Int?.hasFavourites() = this != null && this > 0
 }

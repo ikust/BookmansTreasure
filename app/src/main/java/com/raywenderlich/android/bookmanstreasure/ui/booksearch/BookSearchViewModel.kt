@@ -32,7 +32,7 @@ package com.raywenderlich.android.bookmanstreasure.ui.booksearch
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Transformations
-import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModel
 import android.arch.paging.LivePagedListBuilder
 import android.arch.paging.PagedList
 import com.raywenderlich.android.bookmanstreasure.api.OpenLibraryApi

@@ -40,11 +40,9 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Button
-import android.widget.TextView
 import com.raywenderlich.android.bookmanstreasure.R
 
 class AuthorDetailsDialog : DialogFragment() {
-
   private lateinit var viewModel: AuthorDetailsViewModel
 
   private lateinit var webView: WebView
@@ -52,7 +50,7 @@ class AuthorDetailsDialog : DialogFragment() {
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val rootView = inflater.inflate(R.layout.dialog_author_details, container, false)
 
-    webView = rootView.findViewById<WebView>(R.id.webView)
+    webView = rootView.findViewById(R.id.webView)
     val yesButton = rootView.findViewById<Button>(R.id.btnOk)
 
     yesButton.setOnClickListener { dismiss() }
@@ -82,4 +80,7 @@ class AuthorDetailsDialog : DialogFragment() {
     })
   }
 
+  companion object {
+    const val TAG = "AuthorDetailsDialog.TAG"
+  }
 }
