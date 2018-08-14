@@ -62,13 +62,13 @@ class LauncherFragment : Fragment(), LifecycleObserver {
         findNavController().navigate(
             R.id.actionFavourites,
             null,
-            NavOptions.Builder().setClearTask(true).build()
+            NavOptions.Builder().setPopUpTo(R.id.launcherFragment, true).build()
         )
       } else {
         findNavController().navigate(
             R.id.actionBookSearch,
             null,
-            NavOptions.Builder().setClearTask(true).build()
+            NavOptions.Builder().setPopUpTo(R.id.launcherFragment, true).build()
         )
       }
     })
