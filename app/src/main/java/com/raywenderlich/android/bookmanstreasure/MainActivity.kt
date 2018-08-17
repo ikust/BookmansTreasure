@@ -58,8 +58,6 @@ class MainActivity : AppCompatActivity(), MainActivityDelegate {
     val graph = inflater.inflate(R.navigation.nav_graph)
     navHostFragment.findNavController().graph = graph
 
-    navHostFragment.fragmentManager?.executePendingTransactions()
-
     findNavController(this, R.id.navHostFragment).onHandleDeepLink(intent)
   }
 

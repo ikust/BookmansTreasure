@@ -58,25 +58,20 @@ class LauncherFragment : Fragment(), LifecycleObserver {
     viewModel = ViewModelProviders.of(this).get(LauncherViewModel::class.java)
 
     viewModel.favouriteCount.observe(this, Observer {
-      if (it ?: 0 > 0) {
-        findNavController().navigate(
-            R.id.actionFavourites,
-            null,
-            NavOptions.Builder().setPopUpTo(
-                R.id.launcherFragment,
-                true
-            ).build()
-        )
+      val destination = if (it.hasFavourites()) {
+        R.id.actionFavourites
       } else {
-        findNavController().navigate(
-            R.id.actionBookSearch,
-            null,
-            NavOptions.Builder().setPopUpTo(
-                R.id.launcherFragment,
-                true
-            ).build()
-        )
+        R.id.actionBookSearch
       }
+
+      findNavController().navigate(
+          destination,
+          null,
+          NavOptions.Builder().setPopUpTo(
+              R.id.launcherFragment,
+              true
+          ).build()
+      )
     })
   }
 
