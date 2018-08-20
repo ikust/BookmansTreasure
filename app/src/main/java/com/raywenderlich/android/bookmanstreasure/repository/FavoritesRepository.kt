@@ -28,34 +28,33 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.bookmanstreasure.ui.favourites
+package com.raywenderlich.android.bookmanstreasure.repository
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.paging.LivePagedListBuilder
-import android.arch.paging.PagedList
-import com.raywenderlich.android.bookmanstreasure.repository.FavouritesRepository
+import com.raywenderlich.android.bookmanstreasure.data.Work
+import com.raywenderlich.android.bookmanstreasure.db.FavoritesDao
+import com.raywenderlich.android.bookmanstreasure.db.FavoritesDatabase
+import org.jetbrains.anko.doAsync
 
-class FavouritesViewModel(app: Application) : AndroidViewModel(app) {
+class FavoritesRepository(app: Application) {
 
-  companion object {
-    private const val PAGE_SIZE = 100
+  private val favoritesDao: FavoritesDao = FavoritesDatabase.create(app).favoritesDao()
+
+  fun getFavourites() = favoritesDao.getFavorites()
+
+  fun getFavorite(id: String) = favoritesDao.getFavorite(id)
+
+  fun getFavouriteCount() = favoritesDao.getFavoriteCount()
+
+  fun addFavorite(work: Work) {
+    doAsync {
+      favoritesDao.addFavorite(work)
+    }
   }
 
-  private val favouritesRepository = FavouritesRepository(app)
-
-  private val favouritesDataSourceFactory = favouritesRepository.getFavourites()
-
-  private val pagingConfig = PagedList.Config.Builder()
-      .setPageSize(PAGE_SIZE)
-      .setPrefetchDistance(PAGE_SIZE)
-      .setEnablePlaceholders(true)
-      .build()
-
-  val data = LivePagedListBuilder(favouritesDataSourceFactory, pagingConfig)
-      .build()
-
-  fun refreshList() {
-    data.value?.dataSource?.invalidate()
+  fun removeFavorite(work: Work) {
+    doAsync {
+      favoritesDao.removeFavorite(work)
+    }
   }
 }

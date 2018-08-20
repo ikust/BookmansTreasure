@@ -55,10 +55,10 @@ class LauncherFragment : Fragment(), LifecycleObserver {
     super.onActivityCreated(savedInstanceState)
     viewModel = ViewModelProviders.of(this).get(LauncherViewModel::class.java)
 
-    viewModel.favouriteCount.observe(this, Observer {
-      //TODO implement navigating to Search or Favourites
+    viewModel.favoriteCount.observe(this, Observer {
+      //TODO implement navigating to Search or Favorites
     })
   }
 
-  private fun Int?.hasFavourites() = this != null && this > 0
+  private fun Int?.hasFavorites() = this != null && this > 0
 }

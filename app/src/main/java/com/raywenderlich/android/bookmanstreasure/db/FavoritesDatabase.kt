@@ -30,30 +30,26 @@
 
 package com.raywenderlich.android.bookmanstreasure.db
 
-import android.arch.lifecycle.LiveData
-import android.arch.paging.DataSource
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.OnConflictStrategy.REPLACE
-import android.arch.persistence.room.Query
+import android.arch.persistence.room.Database
+import android.arch.persistence.room.Room
+import android.arch.persistence.room.RoomDatabase
+import android.content.Context
 import com.raywenderlich.android.bookmanstreasure.data.Work
 
-@Dao
-interface FavouritesDao {
+/**
+ * Favourites database schema.
+ */
+@Database(entities = [Work::class], version = 1)
+abstract class FavoritesDatabase : RoomDatabase() {
+  companion object {
 
-  @Query("SELECT * FROM Work")
-  fun getFavourites(): DataSource.Factory<Int, Work>
+    private const val DATABASE_NAME = "favourites.db"
 
-  @Query("SELECT * FROM Work WHERE id = :id ")
-  fun getFavourite(id: String): LiveData<Work>
+    fun create(context: Context): FavoritesDatabase =
+        Room.databaseBuilder(context, FavoritesDatabase::class.java, DATABASE_NAME)
+            .fallbackToDestructiveMigration()
+            .build()
+  }
 
-  @Query("SELECT count(*) FROM Work")
-  fun getFavouriteCount(): LiveData<Int>
-
-  @Insert(onConflict = REPLACE)
-  fun addFavourite(work: Work)
-
-  @Delete
-  fun removeFavourite(work: Work)
+  abstract fun favoritesDao(): FavoritesDao
 }

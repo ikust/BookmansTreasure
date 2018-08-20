@@ -40,7 +40,7 @@ import android.arch.paging.PagedList
 import android.os.Bundle
 import com.raywenderlich.android.bookmanstreasure.api.OpenLibraryApi
 import com.raywenderlich.android.bookmanstreasure.data.Work
-import com.raywenderlich.android.bookmanstreasure.repository.FavouritesRepository
+import com.raywenderlich.android.bookmanstreasure.repository.FavoritesRepository
 import com.raywenderlich.android.bookmanstreasure.source.BookDataSourceFactory
 import com.raywenderlich.android.bookmanstreasure.source.NetworkState
 
@@ -57,7 +57,7 @@ class WorkDetailsViewModel(app: Application) : AndroidViewModel(app) {
     }
   }
 
-  private val favouritesRepository = FavouritesRepository(app)
+  private val favoritesRepository = FavoritesRepository(app)
 
   private val bookDataSourceFactory = BookDataSourceFactory(
       OpenLibraryApi.create()
@@ -79,7 +79,7 @@ class WorkDetailsViewModel(app: Application) : AndroidViewModel(app) {
 
   val work: LiveData<Work> = Transformations.map(bookDataSourceFactory.work) { it }
 
-  var favourite: LiveData<Work> = MutableLiveData()
+  var favorite: LiveData<Work> = MutableLiveData()
 
   fun loadArguments(arguments: Bundle?) {
     if (arguments == null) {
@@ -89,29 +89,29 @@ class WorkDetailsViewModel(app: Application) : AndroidViewModel(app) {
     val work: Work? = arguments.get(WORK_ARGUMENT) as Work?
 
     if (work != null) {
-      favourite = favouritesRepository.getFavourite(work.id)
+      favorite = favoritesRepository.getFavorite(work.id)
 
       bookDataSourceFactory.work.postValue(work)
       bookDataSourceFactory.sourceLiveData.value?.invalidate()
     }
   }
 
-  fun addAsFavourite(): Boolean {
+  fun addAsFavorite(): Boolean {
     val work = this.work.value
 
     return if (work != null) {
-      favouritesRepository.addFavourite(work)
+      favoritesRepository.addFavorite(work)
       true
     } else {
       false
     }
   }
 
-  fun removeFromFavourites(): Boolean {
+  fun removeFromFavorites(): Boolean {
     val work = this.work.value
 
     return if (work != null) {
-      favouritesRepository.removeFavourite(work)
+      favoritesRepository.removeFavorite(work)
       true
     } else {
       false

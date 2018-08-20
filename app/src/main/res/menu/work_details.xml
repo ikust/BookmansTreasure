@@ -31,14 +31,14 @@ THE SOFTWARE.
   xmlns:app="http://schemas.android.com/apk/res-auto">
 
   <item
-    android:id="@+id/menuAddFavourite"
+    android:id="@+id/menuAddFavorite"
     android:icon="@drawable/ic_favorite_border_white_24dp"
-    android:title="@string/add_favourite"
+    android:title="@string/add_favorite"
     app:showAsAction="always" />
 
   <item
-    android:id="@+id/menuRemoveFavourite"
+    android:id="@+id/menuRemoveFavorite"
     android:icon="@drawable/ic_favorite_white_24dp"
-    android:title="@string/remove_from_favourites"
+    android:title="@string/remove_from_favorites"
     app:showAsAction="always" />
 </menu>

@@ -34,7 +34,7 @@ THE SOFTWARE.
   <string name="navigation_drawer_close">Close navigation drawer</string>
 
   <string name="book_search">Book Search</string>
-  <string name="favourites">Favourites</string>
+  <string name="favorites">Favorites</string>
 
   <plurals name="editions_available">
     <item quantity="one">%1$d edition available</item>
@@ -49,8 +49,8 @@ THE SOFTWARE.
   <string name="published_year">Published: %1$s</string>
   <string name="ok">OK</string>
   <string name="author_details">Author details</string>
-  <string name="add_favourite">Add Favourite</string>
-  <string name="remove_from_favourites">Remove from Favourites</string>
+  <string name="add_favorite">Add Favorite</string>
+  <string name="remove_from_favorites">Remove from Favorites</string>
   <string name="book_cover">Book cover</string>
   <string name="search_books">Search books</string>
 </resources>

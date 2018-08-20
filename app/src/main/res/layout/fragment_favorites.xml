@@ -48,7 +48,7 @@ THE SOFTWARE.
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:title="@string/favourites"
+        tools:title="@string/favorites"
         app:layout_collapseMode="pin" />
 
     </LinearLayout>
