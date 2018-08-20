@@ -28,28 +28,34 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.bookmanstreasure.db
+package com.raywenderlich.android.bookmanstreasure.ui.favorites
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.Room
-import android.arch.persistence.room.RoomDatabase
-import android.content.Context
-import com.raywenderlich.android.bookmanstreasure.data.Work
+import android.app.Application
+import android.arch.lifecycle.AndroidViewModel
+import android.arch.paging.LivePagedListBuilder
+import android.arch.paging.PagedList
+import com.raywenderlich.android.bookmanstreasure.repository.FavoritesRepository
 
-/**
- * Favourites database schema.
- */
-@Database(entities = [Work::class], version = 1)
-abstract class FavouritesDatabase : RoomDatabase() {
+class FavoritesViewModel(app: Application) : AndroidViewModel(app) {
+
   companion object {
-
-    private const val DATABASE_NAME = "favourites.db"
-
-    fun create(context: Context): FavouritesDatabase =
-        Room.databaseBuilder(context, FavouritesDatabase::class.java, DATABASE_NAME)
-            .fallbackToDestructiveMigration()
-            .build()
+    private const val PAGE_SIZE = 100
   }
 
-  abstract fun favouritesDao(): FavouritesDao
+  private val favouritesRepository = FavoritesRepository(app)
+
+  private val favouritesDataSourceFactory = favouritesRepository.getFavourites()
+
+  private val pagingConfig = PagedList.Config.Builder()
+      .setPageSize(PAGE_SIZE)
+      .setPrefetchDistance(PAGE_SIZE)
+      .setEnablePlaceholders(true)
+      .build()
+
+  val data = LivePagedListBuilder(favouritesDataSourceFactory, pagingConfig)
+      .build()
+
+  fun refreshList() {
+    data.value?.dataSource?.invalidate()
+  }
 }

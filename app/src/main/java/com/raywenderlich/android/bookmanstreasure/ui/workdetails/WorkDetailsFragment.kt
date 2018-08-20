@@ -63,14 +63,14 @@ class WorkDetailsFragment : Fragment() {
     inflater?.inflate(R.menu.work_details, menu)
 
     // Make menu items invisible until details are loaded.
-    menu?.findItem(R.id.menuAddFavourite)?.isVisible = false
-    menu?.findItem(R.id.menuRemoveFavourite)?.isVisible = false
+    menu?.findItem(R.id.menuAddFavorite)?.isVisible = false
+    menu?.findItem(R.id.menuRemoveFavorite)?.isVisible = false
   }
 
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
     return when (item?.itemId) {
-      R.id.menuAddFavourite -> viewModel.addAsFavourite()
-      R.id.menuRemoveFavourite -> viewModel.removeFromFavourites()
+      R.id.menuAddFavorite -> viewModel.addAsFavorite()
+      R.id.menuRemoveFavorite -> viewModel.removeFromFavorites()
       else -> super.onOptionsItemSelected(item)
     }
   }
@@ -103,13 +103,13 @@ class WorkDetailsFragment : Fragment() {
       toolbar.title = work?.title
       toolbar.subtitle = work?.subtitle
 
-      viewModel.favourite.observe(this@WorkDetailsFragment, Observer { favourite ->
-        if (favourite != null) {
-          toolbar.menu.findItem(R.id.menuAddFavourite)?.isVisible = false
-          toolbar.menu.findItem(R.id.menuRemoveFavourite)?.isVisible = true
+      viewModel.favorite.observe(this@WorkDetailsFragment, Observer { favorite ->
+        if (favorite != null) {
+          toolbar.menu.findItem(R.id.menuAddFavorite)?.isVisible = false
+          toolbar.menu.findItem(R.id.menuRemoveFavorite)?.isVisible = true
         } else {
-          toolbar.menu.findItem(R.id.menuAddFavourite)?.isVisible = true
-          toolbar.menu.findItem(R.id.menuRemoveFavourite)?.isVisible = false
+          toolbar.menu.findItem(R.id.menuAddFavorite)?.isVisible = true
+          toolbar.menu.findItem(R.id.menuRemoveFavorite)?.isVisible = false
         }
       })
 

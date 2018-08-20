@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.bookmanstreasure.ui.favourites
+package com.raywenderlich.android.bookmanstreasure.ui.favorites
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -43,11 +43,11 @@ import com.raywenderlich.android.bookmanstreasure.R
 import com.raywenderlich.android.bookmanstreasure.ui.MainActivityDelegate
 import com.raywenderlich.android.bookmanstreasure.ui.booksearch.WorksAdapter
 import com.raywenderlich.android.bookmanstreasure.util.initToolbar
-import kotlinx.android.synthetic.main.fragment_favourites.*
+import kotlinx.android.synthetic.main.fragment_favorites.*
 
-class FavouritesFragment : Fragment() {
+class FavoritesFragment : Fragment() {
 
-  private lateinit var viewModel: FavouritesViewModel
+  private lateinit var viewModel: FavoritesViewModel
 
   private lateinit var mainActivityDelegate: MainActivityDelegate
 
@@ -63,14 +63,14 @@ class FavouritesFragment : Fragment() {
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                             savedInstanceState: Bundle?): View? {
-    return inflater.inflate(R.layout.fragment_favourites, container, false)
+    return inflater.inflate(R.layout.fragment_favorites, container, false)
   }
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    viewModel = ViewModelProviders.of(this).get(FavouritesViewModel::class.java)
+    viewModel = ViewModelProviders.of(this).get(FavoritesViewModel::class.java)
 
-    initToolbar(toolbar, R.string.favourites, false)
+    initToolbar(toolbar, R.string.favorites, false)
     mainActivityDelegate.setupNavDrawer(toolbar)
     mainActivityDelegate.enableNavDrawer(true)
 

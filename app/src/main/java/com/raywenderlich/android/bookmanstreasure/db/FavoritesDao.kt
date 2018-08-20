@@ -28,33 +28,32 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.bookmanstreasure.repository
+package com.raywenderlich.android.bookmanstreasure.db
 
-import android.app.Application
+import android.arch.lifecycle.LiveData
+import android.arch.paging.DataSource
+import android.arch.persistence.room.Dao
+import android.arch.persistence.room.Delete
+import android.arch.persistence.room.Insert
+import android.arch.persistence.room.OnConflictStrategy.REPLACE
+import android.arch.persistence.room.Query
 import com.raywenderlich.android.bookmanstreasure.data.Work
-import com.raywenderlich.android.bookmanstreasure.db.FavouritesDao
-import com.raywenderlich.android.bookmanstreasure.db.FavouritesDatabase
-import org.jetbrains.anko.doAsync
 
-class FavouritesRepository(app: Application) {
+@Dao
+interface FavoritesDao {
 
-  private val favouritesDao: FavouritesDao = FavouritesDatabase.create(app).favouritesDao()
+  @Query("SELECT * FROM Work")
+  fun getFavorites(): DataSource.Factory<Int, Work>
 
-  fun getFavourites() = favouritesDao.getFavourites()
+  @Query("SELECT * FROM Work WHERE id = :id ")
+  fun getFavorite(id: String): LiveData<Work>
 
-  fun getFavourite(id: String) = favouritesDao.getFavourite(id)
+  @Query("SELECT count(*) FROM Work")
+  fun getFavoriteCount(): LiveData<Int>
 
-  fun getFavouriteCount() = favouritesDao.getFavouriteCount()
+  @Insert(onConflict = REPLACE)
+  fun addFavorite(work: Work)
 
-  fun addFavourite(work: Work) {
-    doAsync {
-      favouritesDao.addFavourite(work)
-    }
-  }
-
-  fun removeFavourite(work: Work) {
-    doAsync {
-      favouritesDao.removeFavourite(work)
-    }
-  }
+  @Delete
+  fun removeFavorite(work: Work)
 }
