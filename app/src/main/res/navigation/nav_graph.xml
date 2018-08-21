@@ -41,8 +41,8 @@ THE SOFTWARE.
       android:id="@+id/actionBookSearch"
       app:destination="@id/bookSearchFragment" />
     <action
-      android:id="@+id/actionFavourites"
-      app:destination="@id/favouritesFragment" />
+      android:id="@+id/actionFavorites"
+      app:destination="@id/favoritesFragment" />
   </fragment>
 
   <fragment
@@ -60,10 +60,10 @@ THE SOFTWARE.
   </fragment>
 
   <fragment
-    android:id="@+id/favouritesFragment"
-    android:name="com.raywenderlich.android.bookmanstreasure.ui.favourites.FavouritesFragment"
-    android:label="favourites_fragment"
-    tools:layout="@layout/fragment_favourites">
+    android:id="@+id/favoritesFragment"
+    android:name="com.raywenderlich.android.bookmanstreasure.ui.favorites.FavoritesFragment"
+    android:label="favorites_fragment"
+    tools:layout="@layout/fragment_favorites">
     <action
       android:id="@+id/actionBookDetails"
       app:destination="@id/bookDetailsGraph" 
@@ -71,7 +71,7 @@ THE SOFTWARE.
       app:exitAnim="@anim/slide_out_left"
       app:popEnterAnim="@anim/slide_in_left"
       app:popExitAnim="@anim/slide_out_right" />
-    <deepLink app:uri="bookmanstreasure://home/favourites" />
+    <deepLink app:uri="bookmanstreasure://home/favorites" />
   </fragment>
 
   <include app:graph="@navigation/book_nav_graph" />

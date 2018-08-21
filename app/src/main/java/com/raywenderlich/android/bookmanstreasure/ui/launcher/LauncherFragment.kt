@@ -57,9 +57,9 @@ class LauncherFragment : Fragment(), LifecycleObserver {
     super.onActivityCreated(savedInstanceState)
     viewModel = ViewModelProviders.of(this).get(LauncherViewModel::class.java)
 
-    viewModel.favouriteCount.observe(this, Observer {
-      val destination = if (it.hasFavourites()) {
-        R.id.actionFavourites
+    viewModel.favoriteCount.observe(this, Observer {
+      val destination = if (it.hasFavorites()) {
+        R.id.actionFavorites
       } else {
         R.id.actionBookSearch
       }
