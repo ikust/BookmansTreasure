@@ -37,7 +37,7 @@ THE SOFTWARE.
       android:icon="@drawable/ic_menu_search"
       android:title="@string/book_search" />
     <item
-      android:id="@+id/favouritesFragment"
+      android:id="@+id/favoritesFragment"
       android:icon="@drawable/ic_menu_favorites"
       android:title="@string/favorites" />
   </group>

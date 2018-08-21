@@ -37,5 +37,5 @@ import com.raywenderlich.android.bookmanstreasure.repository.FavoritesRepository
 
 class LauncherViewModel(app: Application) : AndroidViewModel(app) {
 
-  val favoriteCount: LiveData<Int> = FavoritesRepository(app).getFavouriteCount()
+  val favoriteCount: LiveData<Int> = FavoritesRepository(app).getFavoriteCount()
 }

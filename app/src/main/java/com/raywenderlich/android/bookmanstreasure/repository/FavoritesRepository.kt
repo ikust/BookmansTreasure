@@ -40,11 +40,11 @@ class FavoritesRepository(app: Application) {
 
   private val favoritesDao: FavoritesDao = FavoritesDatabase.create(app).favoritesDao()
 
-  fun getFavourites() = favoritesDao.getFavorites()
+  fun getFavorites() = favoritesDao.getFavorites()
 
   fun getFavorite(id: String) = favoritesDao.getFavorite(id)
 
-  fun getFavouriteCount() = favoritesDao.getFavoriteCount()
+  fun getFavoriteCount() = favoritesDao.getFavoriteCount()
 
   fun addFavorite(work: Work) {
     doAsync {

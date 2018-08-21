@@ -42,9 +42,9 @@ class FavoritesViewModel(app: Application) : AndroidViewModel(app) {
     private const val PAGE_SIZE = 100
   }
 
-  private val favouritesRepository = FavoritesRepository(app)
+  private val favoritesRepository = FavoritesRepository(app)
 
-  private val favouritesDataSourceFactory = favouritesRepository.getFavourites()
+  private val favoritesDataSourceFactory = favoritesRepository.getFavorites()
 
   private val pagingConfig = PagedList.Config.Builder()
       .setPageSize(PAGE_SIZE)
@@ -52,7 +52,7 @@ class FavoritesViewModel(app: Application) : AndroidViewModel(app) {
       .setEnablePlaceholders(true)
       .build()
 
-  val data = LivePagedListBuilder(favouritesDataSourceFactory, pagingConfig)
+  val data = LivePagedListBuilder(favoritesDataSourceFactory, pagingConfig)
       .build()
 
   fun refreshList() {

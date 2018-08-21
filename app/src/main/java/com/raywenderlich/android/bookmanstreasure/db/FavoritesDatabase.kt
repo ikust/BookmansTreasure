@@ -37,13 +37,13 @@ import android.content.Context
 import com.raywenderlich.android.bookmanstreasure.data.Work
 
 /**
- * Favourites database schema.
+ * Favorites database schema.
  */
 @Database(entities = [Work::class], version = 1)
 abstract class FavoritesDatabase : RoomDatabase() {
   companion object {
 
-    private const val DATABASE_NAME = "favourites.db"
+    private const val DATABASE_NAME = "favorites.db"
 
     fun create(context: Context): FavoritesDatabase =
         Room.databaseBuilder(context, FavoritesDatabase::class.java, DATABASE_NAME)
